@@ -59,7 +59,7 @@ async def reg_two(message: Message, state: FSMContext):
 
 @router.message(Registration.number)
 async def reg_final(message: Message, state: FSMContext):
-    await state.update_data(number = message.text)
+    await state.update_data(number = message.contact.phone_number)
     data = await state.get_data()
     await message.answer(f'Спасибо, регистрация завершена!\nИмя: {data["name"]}\nНомер: {data["number"]}\nID: {data["id"]}')
     await state.clear()
