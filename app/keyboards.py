@@ -8,13 +8,18 @@ main = InlineKeyboardMarkup(inline_keyboard=[
     
 ])
 
+number = ReplyKeyboardMarkup(keyboard=[
+    [KeyboardButton(text='Предоставить доступ', request_contact=True)]
+
+])
+
 settings = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Instagram', url='https://www.instagram.com/kirusha_zaidal')]
 
 ])
 cars = ['Tesla', 'BMW', 'Mersedes']
 async def inline_cars():
-    keyboard = ReplyKeyboardBuilder()
+    keyboard = InlineKeyboardBuilder()
     for car in cars:
-        keyboard.add(KeyboardButton(text=car))
+        keyboard.add(InlineKeyboardButton(text=car, callback_data=f'car_{car}'))
     return keyboard.adjust(2).as_markup()
