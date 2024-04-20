@@ -30,12 +30,6 @@ async def how_are_you(message: Message):
     await message.answer("Отлично!") 
 
 
-@router.message(F.text == "Бубусик")
-async def get(message: Message):
-    await message.answer_photo(photo='AgACAgIAAxkBAAMNZh7Ssp2A54tKu3j8Vv6jjQABlNMlAAIb2jEbigrxSKlK-OxA61ToAQADAgADeQADNAQ',
-                        caption="Мой бубусик")
-
-
 @router.callback_query(F.data == 'catalog')
 async def catalog(callback: CallbackQuery):
     await callback.answer('')
